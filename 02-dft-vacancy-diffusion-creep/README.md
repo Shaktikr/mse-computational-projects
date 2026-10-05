@@ -38,6 +38,10 @@ Results are written to `results/Al_2x2x2/` (`vacancy.json`, `neb.json`,
 experiment E_f ≈ 0.67 eV, E_m ≈ 0.6 eV, Q ≈ 1.3–1.5 eV (142 kJ/mol tracer diffusion);
 PBE typically gives E_f ≈ 0.6–0.7 eV and E_m ≈ 0.5–0.6 eV.
 
+A finished PBE calculation of the same quantities for Al (written as plain `pw.x` inputs, with
+all outputs committed) is in [project 10](../10-dft-al-creep-parameters): E_f = 0.667 eV,
+E_m = 0.593 eV, Q = 1.26 eV.
+
 ## Limitations — and how to go further
 
 * A 32-site cell has finite-size errors of ~0.05 eV for E_f; check with 3×3×3 (108 sites).

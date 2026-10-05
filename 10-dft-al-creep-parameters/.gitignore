@@ -1,0 +1,6 @@
+# This project commits its pw.x inputs and outputs (runs/, ~5 MB) as the record behind every
+# number in the README, so the repository-wide "runs/" rule is overridden here.
+!runs/
+tmp_*/
+reference_results/
+results_summary.txt

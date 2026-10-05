@@ -1,0 +1,33 @@
+&CONTROL
+  calculation = 'scf'
+  prefix = 'al'
+  outdir = './tmp_relaxed_k24_g0.0500_it1'
+  pseudo_dir = '/home/claude/repro/pseudo'
+  tstress = .true.
+  tprnfor = .true.
+  disk_io = 'low'
+/
+&SYSTEM
+  ibrav = 0
+  nat = 1
+  ntyp = 1
+  ecutwfc = 55
+  ecutrho = 440
+  occupations = 'smearing'
+  smearing = 'mv'
+  degauss = 0.02
+/
+&ELECTRONS
+  conv_thr = 1.0e-09
+  mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+  Cu 63.546 Cu.pbe-kjpaw.UPF
+CELL_PARAMETERS angstrom
+  -0.6333614981  1.3049048081  2.1143383900
+  -0.6333614981  -1.3049048081  2.1143383900
+  1.5835948459  0.0000000000  2.1143383900
+ATOMIC_POSITIONS crystal
+  Cu 0.0000000000  0.0000000000  0.0000000000
+K_POINTS automatic
+  24 24 24 0 0 0

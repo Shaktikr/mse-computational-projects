@@ -1,0 +1,176 @@
+
+     Program LD1 v.6.7MaX starts on  2Oct2026 at  5:47:12 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     1 processors
+
+     MPI processes distributed on     1 nodes
+     Waiting for input...
+     Reading input from standard input
+     --------------------------- All-electron run ----------------------------
+
+     Al                                                                         
+     scalar relativistic calculation
+
+     atomic number is 13.00
+     dft =PBE   lsd =0 sic =0 latt =0  beta=0.20 tr2=1.0E-14
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+     mesh =1135 r(mesh) = 100.48924 a.u. xmin = -7.00 dx = 0.01250
+     1 Ry =  13.60569312 eV, c = 137.03599908
+
+     n l     nl                  e(Ry)          e(Ha)          e(eV)
+     1 0     1S 1( 2.00)      -111.0670       -55.5335     -1511.1441
+     2 0     2S 1( 2.00)        -7.9500        -3.9750      -108.1651
+     2 1     2P 1( 6.00)        -5.1187        -2.5593       -69.6432
+     3 0     3S 1( 2.00)        -0.5698        -0.2849        -7.7529
+     3 1     3P 1( 1.00)        -0.1993        -0.0997        -2.7121
+
+     final scf error:  6.6E-15 reached in  23 iterations
+
+     Etot =    -485.370441 Ry,    -242.685221 Ha,   -6603.801276 eV
+
+     Ekin =     486.252059 Ry,     243.126029 Ha,    6615.796290 eV
+     Encl =   -1160.737048 Ry,    -580.368524 Ha,  -15792.632075 eV
+     Eh   =     225.977757 Ry,     112.988878 Ha,    3074.584008 eV
+     Exc  =     -36.863208 Ry,     -18.431604 Ha,    -501.549499 eV
+
+
+     normalization and overlap integrals
+
+     s(1S/1S) =  1.000000  <r> =   0.1202  <r2> =    0.0195  r(max) =   0.0779
+     s(1S/2S) = -0.000658
+     s(1S/3S) = -0.000166
+     s(2S/2S) =  1.000000  <r> =   0.6261  <r2> =    0.4701  r(max) =   0.4954
+     s(2S/3S) = -0.000081
+     s(2P/2P) =  1.000000  <r> =   0.6034  <r2> =    0.4632  r(max) =   0.4264
+     s(2P/3P) = -0.000050
+     s(3S/3S) =  1.000000  <r> =   2.5429  <r2> =    7.5539  r(max) =   2.0856
+     s(3P/3P) =  1.000000  <r> =   3.4481  <r2> =   14.3562  r(max) =   2.6447
+
+     ------------------------ End of All-electron run ------------------------
+
+
+     --------------------- Generating US pseudopotential ---------------------
+
+
+      Generating local pot.: lloc=2, matching radius rcloc =   1.9000
+
+      Computing core charge for nlcc: 
+
+       r > 1.31 : true rho core
+       r < 1.31 : rho core = a sin(br)/r    a=   1.82  b=   2.07
+
+      Integrated core pseudo-charge :   1.46
+      Wfc-us  3S rcutus= 2.086  Estimated cut-off energy=    10.21 Ry
+      Wfc-us  3S rcutus= 2.086  Estimated cut-off energy=    25.82 Ry
+      Wfc-us  3P rcutus= 2.086  Estimated cut-off energy=    16.61 Ry
+      Wfc-us  3P rcutus= 2.086  Estimated cut-off energy=    36.13 Ry
+
+      The bmat matrix
+     0.85311     0.77499     0.00000     0.00000
+     0.65680     0.82132     0.00000     0.00000
+     0.00000     0.00000     0.16722     0.42224
+     0.00000     0.00000     0.32955     1.18649
+
+      The bmat + epsilon qq matrix
+     0.89604     0.66688     0.00000     0.00000
+     0.66707     1.13081     0.00000     0.00000
+     0.00000     0.00000     0.16854     0.33242
+     0.00000     0.00000     0.33254     1.01337
+
+      The qq matrix
+    -0.07533    -0.01802     0.00000     0.00000
+    -0.01802     0.05158     0.00000     0.00000
+     0.00000     0.00000    -0.00662    -0.01497
+     0.00000     0.00000    -0.01497    -0.02885
+
+     Q pseudized with Bessel functions
+     Expected ecutrho=      84.1204 due to l1=  1   l2=  1
+
+      The ddd matrix
+     0.50071     0.40223     0.00000     0.00000
+     0.40223     1.52276     0.00000     0.00000
+     0.00000     0.00000     0.19241     0.20167
+     0.00000     0.00000     0.20167    -0.16101
+
+     ------------------- End of pseudopotential generation -------------------
+
+     --------------------------- All-electron run ----------------------------
+
+     Al                                                                         
+     scalar relativistic calculation
+
+     atomic number is 13.00
+     dft =PBE   lsd =0 sic =0 latt =0  beta=0.20 tr2=1.0E-14
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+     mesh =1135 r(mesh) = 100.48924 a.u. xmin = -7.00 dx = 0.01250
+     1 Ry =  13.60569312 eV, c = 137.03599908
+
+     n l     nl                  e(Ry)          e(Ha)          e(eV)
+     1 0     1S 1( 2.00)      -111.0670       -55.5335     -1511.1441
+     2 0     2S 1( 2.00)        -7.9500        -3.9750      -108.1651
+     2 1     2P 1( 6.00)        -5.1187        -2.5593       -69.6432
+     3 0     3S 1( 2.00)        -0.5698        -0.2849        -7.7529
+     3 1     3P 1( 1.00)        -0.1993        -0.0997        -2.7121
+
+     final scf error:  6.6E-15 reached in  23 iterations
+
+     Etot =    -485.370441 Ry,    -242.685221 Ha,   -6603.801276 eV
+
+     Ekin =     486.252059 Ry,     243.126029 Ha,    6615.796290 eV
+     Encl =   -1160.737048 Ry,    -580.368524 Ha,  -15792.632075 eV
+     Eh   =     225.977757 Ry,     112.988878 Ha,    3074.584008 eV
+     Exc  =     -36.863208 Ry,     -18.431604 Ha,    -501.549499 eV
+
+
+     normalization and overlap integrals
+
+     s(1S/1S) =  1.000000  <r> =   0.1202  <r2> =    0.0195  r(max) =   0.0779
+     s(1S/2S) = -0.000658
+     s(1S/3S) = -0.000166
+     s(2S/2S) =  1.000000  <r> =   0.6261  <r2> =    0.4701  r(max) =   0.4954
+     s(2S/3S) = -0.000081
+     s(2P/2P) =  1.000000  <r> =   0.6034  <r2> =    0.4632  r(max) =   0.4264
+     s(2P/3P) = -0.000050
+     s(3S/3S) =  1.000000  <r> =   2.5429  <r2> =    7.5539  r(max) =   2.0856
+     s(3P/3P) =  1.000000  <r> =   3.4481  <r2> =   14.3562  r(max) =   2.6447
+
+     ------------------------ End of All-electron run ------------------------
+
+
+     ---------------------- Testing the pseudopotential ----------------------
+
+     Al                                                                         
+     scalar relativistic calculation
+
+     atomic number is 13.00   valence charge is  3.00
+     dft =PBE   lsd =0 sic =0 latt =0  beta=0.20 tr2=1.0E-14
+     mesh =1135 r(mesh) = 100.48924 xmin = -7.00 dx = 0.01250
+
+     n l     nl             e AE (Ry)        e PS (Ry)    De AE-PS (Ry) 
+     1 0     3S   1( 2.00)       -0.56982       -0.56983        0.00000
+     2 1     3P   1( 1.00)       -0.19934       -0.19934       -0.00000
+
+     eps = 2.1E-16  iter =  3
+
+     Etot =    -485.370441 Ry,    -242.685221 Ha,   -6603.801276 eV
+     Etotps =    -5.198886 Ry,      -2.599443 Ha,     -70.734451 eV
+
+     Ekin =       1.225417 Ry,       0.612708 Ha,      16.672641 eV
+     Encl =      -7.879199 Ry,      -3.939600 Ha,    -107.201967 eV
+     Ehrt =       2.884504 Ry,       1.442252 Ha,      39.245677 eV
+     Ecxc =      -2.623446 Ry,      -1.311723 Ha,     -35.693800 eV
+     (Ecc =      -1.274256 Ry,      -0.637128 Ha,     -17.337135 eV)
+     Epseu=       1.193838 Ry,       0.596919 Ha,      16.242998 eV
+
+     ---------------------- End of pseudopotential test ----------------------
+

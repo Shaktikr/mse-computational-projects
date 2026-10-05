@@ -9,7 +9,7 @@ Shakti Kumar · PhD, Department of Materials Science & Engineering, IIT Kanpur
 [![tests](https://github.com/Shaktikr/mse-computational-projects/actions/workflows/tests.yml/badge.svg)](https://github.com/Shaktikr/mse-computational-projects/actions/workflows/tests.yml)
 ![python](https://img.shields.io/badge/python-3.10%2B-blue) ![license](https://img.shields.io/badge/license-MIT-green)
 
-The nine projects follow the research themes of the Mechanics and Materials Research
+The eleven projects follow the research themes of the Mechanics and Materials Research
 Laboratory at IIT Kanpur — creep and high-temperature deformation, spark plasma
 sintering, B2 intermetallics, superalloys, medium/high-entropy alloys and ML for creep life
 (see [docs/research-alignment.md](docs/research-alignment.md)). Every project is runnable,
@@ -30,6 +30,8 @@ unit-tested and documented, with the theory, the code and the results side by si
 | 07 | [SPS: Joule heating & densification](07-sps-joule-heating-densification) | finite-volume electro-thermal, kinetics | sample vs pyrometer temperature for metal/ceramic powders; n, Q, D_eff and master sintering curve from densification data |
 | 08 | [Phase-field solid-state sintering](08-phase-field-sintering) | Cahn–Hilliard + Allen–Cahn, spectral | neck growth for surface vs grain-boundary diffusion, local growth exponent, pore pinch-off and rounding in a 16-particle aggregate |
 | 09 | [MD creep of nanocrystalline metals](09-md-nanocrystalline-creep) | LAMMPS, EAM | Voronoi polycrystals (fcc / B2), constant-stress creep with seed averaging, stress exponent and activation energy |
+| 10 | [First-principles creep parameters of Al](10-dft-al-creep-parameters) | Quantum ESPRESSO (PBE), plain pw.x inputs | G, b, vacancy E_f and E_m, GSFE → **Q = 1.26 eV vs 1.28 eV measured**, γ_isf = 134–140 mJ/m²; D(T) and creep rates; all runs committed |
+| 11 | [Ideal shear strength of Al and Cu (Ogata, Li & Yip, *Science* 2002)](11-ideal-shear-strength-ogata2002) | DFT stress–strain, relaxed (pure) shear, GSFE | reproduces the paper's finding that Al is stronger in ideal shear than the stiffer Cu (τ_max 3.19 vs 2.14 GPa) |
 
 ![overview](docs/overview.png)
 
@@ -39,7 +41,7 @@ unit-tested and documented, with the theory, the code and the results side by si
 git clone https://github.com/Shaktikr/mse-computational-projects.git
 cd mse-computational-projects
 conda env create -f environment.yml && conda activate msecomp   # or: pip install -r requirements.txt
-pytest                                                          # ~40 tests, under a minute
+pytest                                                          # ~60 tests, under a minute
 python 03-creep-data-analysis/scripts/analyze_creep.py 03-creep-data-analysis/data/synthetic_composite
 ```
 
@@ -50,7 +52,8 @@ data): [docs/getting-started.md](docs/getting-started.md).
 
 New to DFT? [docs/dft-learning-roadmap.md](docs/dft-learning-roadmap.md) is a 16-week path
 from the Kohn–Sham equations to defects, phonons, SQS alloys and machine-learned
-potentials, built around projects 01 and 02.
+potentials, built around projects 01 and 02; projects 10 and 11 are complete worked examples
+(a full parameter study, and the reproduction of a published paper).
 
 ## Repository layout
 
@@ -64,6 +67,8 @@ potentials, built around projects 01 and 02.
 ├── 07-sps-joule-heating-densification/ spsmodel/  scripts/  results/
 ├── 08-phase-field-sintering/      pfsinter/  scripts/  results/
 ├── 09-md-nanocrystalline-creep/   mdcreep/  scripts/  lammps_inputs/  potentials/  results/
+├── 10-dft-al-creep-parameters/    numbered pw.x workflow scripts  pseudo/  runs/ (all inputs + outputs)  tests/
+├── 11-ideal-shear-strength-ogata2002/ shear scripts  pseudo/  runs/  figures/  tests/
 └── docs/                          roadmap, research alignment, getting started
 ```
 

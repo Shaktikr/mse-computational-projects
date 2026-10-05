@@ -1,0 +1,33 @@
+&CONTROL
+  calculation = 'scf'
+  prefix = 'al'
+  outdir = './tmp_mono_k24_0.010'
+  pseudo_dir = '/home/claude/dft/pseudo'
+  tstress = .true.
+  tprnfor = .true.
+  disk_io = 'low'
+/
+&SYSTEM
+  ibrav = 0
+  nat = 1
+  ntyp = 1
+  ecutwfc = 40
+  ecutrho = 320
+  occupations = 'smearing'
+  smearing = 'mv'
+  degauss = 0.02
+/
+&ELECTRONS
+  conv_thr = 1.0e-10
+  mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+  Al 26.9815 Al.pbe-n-rrkjus_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+  -2.0182919281  -0.0100914596  2.0183423867
+  0.0100914596  2.0182919281  2.0183423867
+  -2.0082004685  2.0082004685  0.0000000000
+ATOMIC_POSITIONS crystal
+  Al 0.0000000000  0.0000000000  0.0000000000
+K_POINTS automatic
+  24 24 24 0 0 0
