@@ -1,0 +1,16 @@
+{
+  "common_ecutwfc_Ry": 60.0,
+  "kspacing_invA": {
+    "Al": 0.12,
+    "Ni": 0.15,
+    "NiAl": 0.15
+  },
+  "E_per_atom_eV": {
+    "Al": -68.56809705287874,
+    "Ni": -1368.430545886223,
+    "NiAl": -719.1579685261385
+  },
+  "formation_enthalpy_eV_per_atom": -0.658647056587597,
+  "formation_enthalpy_kJ_per_mol_atoms": -63.5495612548543,
+  "note": "Ni reference is ferromagnetic fcc Ni; each phase at its own DFT equilibrium volume; 0 K, no zero-point energy."
+}

@@ -103,8 +103,13 @@ def main():
     fig.tight_layout()
     fig.savefig(out / "fig_two_particle_snapshots.png", dpi=150)
     plt.close(fig)
-    (out / "neck_growth_fits.json").write_text(json.dumps({"neck_growth_exponent_m": fits, "R": R}, indent=2))
+    (out / "neck_growth_fits.json").write_text(json.dumps(
+        {"neck_growth_exponent_m": fits, "fit_range_x_over_R": [0.25, 0.6], "R": R,
+         "note": "apparent exponents over the fit range; see fig_neck_growth.png for the local exponent vs x/R"},
+        indent=2))
     print("neck-growth exponents:", fits)
+    from plot_neck_growth import main as replot  # adds the local-exponent panel
+    replot()
 
 
 if __name__ == "__main__":

@@ -10,14 +10,20 @@ def _smooth_disk(X, Y, xc, yc, R, width=2.0):
     return 0.5 * (1 - np.tanh((d - R) / width))
 
 
-def two_particles(nx=256, ny=128, R=30.0, overlap=1.0):
-    """Two equal circles touching on the x axis (slight overlap seeds the neck)."""
+def two_particles(nx=256, ny=128, R=30.0, overlap=1.0, combine: str = "sum"):
+    """Two equal circles touching on the x axis (slight overlap seeds the neck).
+
+    combine='sum' adds the two diffuse profiles (fills the contact region: initial neck
+    x/R ~ 0.3 for R = 40); combine='max' takes their maximum (a sharper initial contact,
+    x/R ~ 0.2), closer to touching spheres. Larger R / thinner interfaces are needed to
+    reach the classical small-neck regime x/R << 1.
+    """
     y, x = np.mgrid[0:ny, 0:nx].astype(float)
     xc1 = nx / 2 - R + overlap / 2
     xc2 = nx / 2 + R - overlap / 2
     e1 = _smooth_disk(x, y, xc1, ny / 2, R)
     e2 = _smooth_disk(x, y, xc2, ny / 2, R)
-    rho = np.clip(e1 + e2, 0, 1)
+    rho = np.clip(e1 + e2, 0, 1) if combine == "sum" else np.maximum(e1, e2)
     return rho, np.stack([e1, e2]), {"centres": [(xc1, ny / 2), (xc2, ny / 2)], "R": R}
 
 
