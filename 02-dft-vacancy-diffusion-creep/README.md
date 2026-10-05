@@ -14,8 +14,14 @@ $$\dot\varepsilon_{NH}=14\frac{\Omega D_L\sigma}{kTd^2},\qquad \dot\varepsilon_{
 
 1. `scripts/01_vacancy_formation.py` — 2×2×2 fcc supercell (32 sites) at the **DFT** lattice
    parameter from project 01; unrelaxed and relaxed vacancy formation energy.
-2. `scripts/02_vacancy_migration_neb.py` — relaxed initial/final states, IDPP initial path,
-   climbing-image NEB (ASE) with Quantum ESPRESSO forces → E_m and the energy profile.
+2. `scripts/02_vacancy_migration_neb.py` — migration barrier E_m by two methods:
+   * `--method midpoint` (default): the jumping atom is fixed half-way along the jump and all
+     other atoms are relaxed. For the symmetric nearest-neighbour jump in a pure fcc metal
+     the saddle lies exactly there, so one relaxation gives E_m.
+   * `--method neb`: climbing-image NEB (ASE, IDPP initial path) between relaxed end
+     states — the general method, needed for asymmetric paths (B2 compounds, solute–vacancy
+     pairs, concentrated alloys) but one DFT calculation per image per optimiser step.
+   A unit test checks that both give the same barrier (1.164 eV for EMT Ni).
 3. `scripts/03_diffusion_and_creep.py` — D(T) with the attempt frequency ν = kθ_D/h (θ_D
    from the DFT elastic constants of project 01), comparison with tracer-diffusion
    experiments, Nabarro–Herring and Coble rates vs grain size and the crossover grain size.

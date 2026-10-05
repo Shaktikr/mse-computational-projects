@@ -41,6 +41,21 @@ def render(ax, sim, title):
     ax.set_yticks([])
 
 
+def plot_stats(df, out):
+    """Surface-energy reduction and grain count (from results/multi_particle.csv)."""
+    fig, ax = plt.subplots(1, 2, figsize=(9.5, 3.6))
+    ax[0].semilogx(df["t"], df["surface_length"] / df["surface_length"].iloc[0])
+    ax[0].set(xlabel="t (reduced units)", ylabel="surface length / initial", title="Free-surface (energy) reduction")
+    ax[1].semilogx(df["t"], df["n_grains"], "o-", ms=3)
+    ax[1].set(xlabel="t (reduced units)", ylabel="number of grains", title="Grains surviving",
+              ylim=(0, df["n_grains"].max() + 2))
+    for a in ax:
+        a.grid(alpha=0.3, which="both")
+    fig.tight_layout()
+    fig.savefig(out / "fig_multi_particle_stats.png", dpi=150)
+    plt.close(fig)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--quick", action="store_true")
@@ -87,18 +102,7 @@ def main():
     fig.savefig(out / "fig_multi_particle_snapshots.png", dpi=150)
     plt.close(fig)
 
-    fig, ax = plt.subplots(1, 3, figsize=(13, 3.6))
-    ax[0].semilogx(df["t"], df["surface_length"] / df["surface_length"].iloc[0])
-    ax[0].set(xlabel="t", ylabel="surface length / initial", title="Surface-energy reduction")
-    ax[1].semilogx(df["t"], df["n_grains"], "o-", ms=3)
-    ax[1].set(xlabel="t", ylabel="number of grains", title="Grain growth / coalescence")
-    ax[2].loglog(df["t"], df["mean_grain_area"], "o-", ms=3)
-    ax[2].set(xlabel="t", ylabel="mean grain area (px²)", title="Mean grain size")
-    for a in ax:
-        a.grid(alpha=0.3, which="both")
-    fig.tight_layout()
-    fig.savefig(out / "fig_multi_particle_stats.png", dpi=150)
-    plt.close(fig)
+    plot_stats(df, out)
 
     try:
         from PIL import Image

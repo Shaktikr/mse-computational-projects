@@ -1,6 +1,7 @@
 {
   "element": "Ni",
   "jumper_index": 13,
+  "method": "climbing-image NEB",
   "n_images": 3,
   "energies_eV": [
     0.0,

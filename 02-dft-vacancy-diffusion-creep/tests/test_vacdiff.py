@@ -46,3 +46,18 @@ def test_coble_beats_nabarro_herring_below_crossover():
     d_star = (cr.A_COBLE / cr.A_NH) * dDb / DL
     for d, coble_wins in [(0.1 * d_star, True), (10 * d_star, False)]:
         assert (cr.coble(10, T, d, dDb, Om) > cr.nabarro_herring(10, T, d, DL, Om)) == coble_wins
+
+
+def test_midpoint_method_equals_neb_for_symmetric_jump():
+    from vacdiff.defects import relax_positions, remove_atom
+    from vacdiff.neb import midpoint_state
+
+    s = Settings(calc="emt", fmax=0.01, workdir="/tmp")
+    perfect = fcc_supercell("Ni", 3.4868, 2)
+    _, e_init = relax_positions(remove_atom(perfect, 0), s, "i")
+    j = nearest_neighbour(perfect, 0)
+    _, e_sad = relax_positions(midpoint_state(perfect, j), s, "m")
+    init, _ = relax_positions(remove_atom(perfect, 0), s, "i")
+    fin, _ = relax_positions(final_state(perfect, j), s, "f")
+    neb = run_neb(init, fin, s, n_images=3, fmax=0.02)
+    assert e_sad - e_init == pytest.approx(neb.Em_eV, abs=0.01)

@@ -7,5 +7,5 @@ cd "$(dirname "$0")"
 source ../01-dft-fundamentals-qe/tools/env.sh "${1:-2}"
 EL="${2:-Al}"
 python3 scripts/01_vacancy_formation.py    --element "$EL"
-python3 scripts/02_vacancy_migration_neb.py --element "$EL"
+python3 scripts/02_vacancy_migration_neb.py --element "$EL" --method midpoint
 python3 scripts/03_diffusion_and_creep.py   --element "$EL"

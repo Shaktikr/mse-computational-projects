@@ -49,6 +49,25 @@ def final_state(perfect: Atoms, jumper: int) -> Atoms:
     return final
 
 
+def midpoint_state(perfect: Atoms, jumper: int) -> Atoms:
+    """Jumping atom placed half-way between its site and the vacant site 0, and FIXED there.
+
+    For a nearest-neighbour vacancy jump in a pure fcc (or bcc) metal the path is symmetric,
+    so the saddle point lies exactly at the midpoint and the force on the jumper vanishes
+    there by symmetry. Relaxing all other atoms with the jumper fixed gives the saddle energy
+    from ONE relaxation - far cheaper than an NEB. Not valid for asymmetric paths
+    (B2 compounds, solute-vacancy pairs, concentrated alloys): use run_neb there.
+    """
+    from ase.constraints import FixAtoms
+
+    at = perfect.copy()
+    d = perfect.get_distance(jumper, 0, mic=True, vector=True)
+    at.positions[jumper] = perfect.positions[jumper] + 0.5 * d
+    del at[0]
+    at.set_constraint(FixAtoms(indices=[jumper - 1]))
+    return at
+
+
 def run_neb(initial: Atoms, final: Atoms, s: Settings, n_images: int = 3, fmax: float = 0.05,
             steps: int = 200, tag: str = "neb") -> NEBResult:
     """Relaxed end points in, CI-NEB out. `n_images` = number of INTERMEDIATE images."""
