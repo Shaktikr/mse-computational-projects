@@ -1,0 +1,25 @@
+{
+  "element": "Al",
+  "a0_A": 4.039661903788886,
+  "settings": {
+    "calc": "qe",
+    "ecutwfc": 35.0,
+    "kspacing": 0.2,
+    "degauss": 0.02,
+    "fmax": 0.01,
+    "workdir": "/home/claude/mse-computational-projects/02-dft-vacancy-diffusion-creep/runs/qe/Al_2x2x2"
+  },
+  "kmesh": [
+    4,
+    4,
+    4
+  ],
+  "n_sites": 32,
+  "E_perfect_eV": -2194.350822585776,
+  "E_vac_unrelaxed_eV": -2125.164901538612,
+  "E_vac_relaxed_eV": -2125.241404711667,
+  "Ef_unrelaxed_eV": 0.612457841358264,
+  "Ef_relaxed_eV": 0.5359546683030203,
+  "relaxation_energy_eV": -0.07650317305524368,
+  "max_nn_displacement_A": 0.048711102669490955
+}

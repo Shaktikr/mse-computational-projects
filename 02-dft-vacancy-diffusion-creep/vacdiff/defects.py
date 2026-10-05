@@ -82,8 +82,15 @@ def energy(atoms: Atoms, s: Settings, tag: str) -> float:
         from ase.calculators.emt import EMT
         at.calc = EMT()
     else:
+        pwo = Path(s.workdir) / tag / "espresso.pwo"
+        if _finished(pwo):  # restart-safe: reuse a completed run
+            return float(read(pwo, index=-1).get_potential_energy())
         at.calc = _qe(at, Path(s.workdir) / tag, s, relax=False)
     return float(at.get_potential_energy())
+
+
+def _finished(pwo: Path) -> bool:
+    return pwo.exists() and "JOB DONE" in pwo.read_text(errors="ignore")
 
 
 def relax_positions(atoms: Atoms, s: Settings, tag: str) -> tuple[Atoms, float]:
@@ -94,9 +101,21 @@ def relax_positions(atoms: Atoms, s: Settings, tag: str) -> tuple[Atoms, float]:
         at.calc = EMT()
         BFGS(at, logfile=None).run(fmax=s.fmax, steps=500)
         return at, float(at.get_potential_energy())
+    pwo = Path(s.workdir) / tag / "espresso.pwo"
+    if _finished(pwo):  # restart-safe: a completed relaxation is reused
+        final = read(pwo, index=-1)
+        return final, float(final.get_potential_energy())
+    if pwo.exists():  # interrupted relaxation: continue from the last ionic geometry
+        try:
+            last = read(pwo, index=-1)
+            if len(last) == len(at):
+                at.positions = last.positions
+                print(f"  resuming {tag} from its last ionic step")
+        except Exception:  # noqa: BLE001 - unreadable partial output, start afresh
+            pass
     at.calc = _qe(at, Path(s.workdir) / tag, s, relax=True)
     at.get_potential_energy()  # runs pw.x 'relax'
-    final = read(Path(s.workdir) / tag / "espresso.pwo", index=-1)
+    final = read(pwo, index=-1)
     return final, float(final.get_potential_energy())
 
 
