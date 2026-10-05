@@ -71,9 +71,12 @@ Computed with PBE, ultrasoft pseudopotentials, the converged settings above. The
 
 Elastic constants in GPa (stress–strain route; the energy–strain route gives 101.2 / 61.7 / 21.4).
 The lattice parameter and bulk modulus agree with experiment within 1–2 %. C44 of Al is
-the most sensitive quantity here: it comes from energy differences of ~0.1 meV/atom
-and depends on smearing and k-point density — a good exercise is to repeat
-`03_elastic.py` with `--kspacing 0.08` and `degauss = 0.01` and watch it converge.
+the most sensitive quantity here: it comes from energy differences of ~0.1 meV/atom and
+depends on smearing and k-point density. A check at one strain
+([`results/Al/c44_convergence.json`](results/Al/c44_convergence.json)) shows it rising
+from **23.4 GPa** (k-spacing 0.12 Å⁻¹, 0.02 Ry smearing) to **26.9 GPa** (0.08 Å⁻¹,
+0.01 Ry), towards the experimental 28–32 GPa — a textbook example of why a property
+must be converged *for itself*, not just the total energy.
 
 ![EOS and elastic constants of Al](results/Al/eos.png)
 
