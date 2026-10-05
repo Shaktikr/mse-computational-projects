@@ -26,7 +26,35 @@ mpirun -np 64 lmp -in lammps_inputs/in.nc_creep.lmp -var T 1300 -var sigma 1.0 -
 
 ## Results (nanocrystalline Ni, demo size)
 
-MD_RESULTS_PLACEHOLDER
+Periodic box 4.5 nm, 4 grains (d ≈ 3.5 nm, 7,886 atoms, ~41 % of atoms in grain
+boundaries), Foiles EAM; 10 ps NPT equilibration + 40 ps at constant tensile stress;
+**3 independent velocity seeds per condition** (`results/Ni/rates.csv`):
+
+| T (K) | σ (GPa) | mean rate (s⁻¹) | std. error |
+|---|---|---|---|
+| 1300 | 0.4 | 4.0 × 10⁸ | 1.7 × 10⁸ |
+| 1300 | 0.6 | 1.0 × 10⁹ | 0.4 × 10⁹ |
+| 1300 | 0.8 | 2.9 × 10⁹ | 0.1 × 10⁹ |
+| 1300 | 1.0 | 3.5 × 10⁹ | 0.5 × 10⁹ |
+| 1200 | 0.6 | 1.0 × 10⁹ | 0.5 × 10⁹ |
+| 1400 | 0.6 | 1.7 × 10⁹ | 0.2 × 10⁹ |
+
+* **Stress exponent n = 2.2 ± 0.4** — far below the n ≈ 4–5 of dislocation climb in
+  coarse-grained Ni and consistent with grain-boundary-mediated creep (Coble diffusion and
+  grain-boundary sliding, n ≈ 1–2), as expected for 3.5 nm grains.
+* **Activation energy Q = 0.44 ± 0.34 eV** — poorly constrained: three temperatures with
+  this much run-to-run scatter cannot pin it down. It is at most of the order of the
+  grain-boundary diffusion energy of Ni (~1.2 eV), as MD studies of nanocrystalline metals
+  under GPa stresses often find. More temperatures and seeds are needed for a real number.
+
+![MD creep](results/Ni/fig_md_creep.png)
+
+**Why seed averaging matters.** A first attempt used one run per condition at higher
+stresses (0.6–1.2 GPa). It gave n = 4.8 and a rate at 1400 K *lower* than at 1300 K
+(an unphysical, non-monotonic Arrhenius plot). At the same nominal condition, individual
+runs differ by up to a factor of ~9 because a 4-grain box deforms through a few discrete
+sliding events. Averaging independent runs (and better still, several microstructures and
+larger boxes) is essential before quoting n or Q from MD.
 
 ## Reading MD creep results critically
 
