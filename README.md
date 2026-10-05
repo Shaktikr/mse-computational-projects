@@ -21,15 +21,15 @@ unit-tested and documented, with the theory, the code and the results side by si
 
 | # | Project | Methods | Highlights |
 |---|---|---|---|
-| 01 | [DFT fundamentals with Quantum ESPRESSO](01-dft-fundamentals-qe) | plane-wave DFT (PBE), ASE | convergence, EOS, elastic constants and formation enthalpy of Al, ferromagnetic Ni and **B2 NiAl**; annotated pw.x inputs; HPC template |
-| 02 | [From vacancies to diffusional creep](02-dft-vacancy-diffusion-creep) | DFT supercells, CI-NEB | vacancy formation + migration energies → D(T) → Nabarro–Herring / Coble creep vs grain size |
+| 01 | [DFT fundamentals with Quantum ESPRESSO](01-dft-fundamentals-qe) | plane-wave DFT (PBE), ASE | convergence, EOS, elastic constants and formation enthalpy of Al, ferromagnetic Ni and **B2 NiAl** (C_ij within 5 % of experiment, ΔH_f = −0.66 eV/atom); annotated pw.x inputs; HPC template |
+| 02 | [From vacancies to diffusional creep](02-dft-vacancy-diffusion-creep) | DFT supercells, constrained saddle / CI-NEB | vacancy formation + migration energies → D(T) → Nabarro–Herring / Coble creep vs grain size |
 | 03 | [Creep data analysis toolkit](03-creep-data-analysis) | signal processing, regression | minimum creep rate, n, Q, **threshold stress**, θ-projection, Larson–Miller, Monkman–Grant, sinh law |
 | 04 | [Deformation-mechanism maps](04-deformation-mechanism-maps) | constitutive modelling | Frost–Ashby maps (stress–temperature, stress–grain size) with test-point overlay |
 | 05 | [ML for creep-rupture life](05-ml-creep-rupture-life) | GP, GBM, RF, MLP, SHAP, conformal | grouped CV, extrapolation, uncertainty, **inverse alloy design** |
 | 06 | [ML for HEA phase & strength](06-ml-hea-phase-strength) | descriptors + RF/GBM/SVM | real MPEA dataset (1,545 entries): 80 % phase accuracy vs 58 % for empirical rules; Al_xCoCrFeNi screening |
 | 07 | [SPS: Joule heating & densification](07-sps-joule-heating-densification) | finite-volume electro-thermal, kinetics | sample vs pyrometer temperature for metal/ceramic powders; n, Q, D_eff and master sintering curve from densification data |
-| 08 | [Phase-field solid-state sintering](08-phase-field-sintering) | Cahn–Hilliard + Allen–Cahn, spectral | neck growth for surface vs grain-boundary diffusion, multi-particle sintering and grain growth |
-| 09 | [MD creep of nanocrystalline metals](09-md-nanocrystalline-creep) | LAMMPS, EAM | Voronoi polycrystals (fcc / B2), constant-stress creep, stress exponent and activation energy |
+| 08 | [Phase-field solid-state sintering](08-phase-field-sintering) | Cahn–Hilliard + Allen–Cahn, spectral | neck growth for surface vs grain-boundary diffusion, local growth exponent, pore pinch-off and rounding in a 16-particle aggregate |
+| 09 | [MD creep of nanocrystalline metals](09-md-nanocrystalline-creep) | LAMMPS, EAM | Voronoi polycrystals (fcc / B2), constant-stress creep with seed averaging, stress exponent and activation energy |
 
 ![overview](docs/overview.png)
 
@@ -39,7 +39,7 @@ unit-tested and documented, with the theory, the code and the results side by si
 git clone https://github.com/Shaktikr/mse-computational-projects.git
 cd mse-computational-projects
 conda env create -f environment.yml && conda activate msecomp   # or: pip install -r requirements.txt
-pytest                                                          # 38 tests, ~15 s
+pytest                                                          # ~40 tests, under a minute
 python 03-creep-data-analysis/scripts/analyze_creep.py 03-creep-data-analysis/data/synthetic_composite
 ```
 

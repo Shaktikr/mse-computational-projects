@@ -65,9 +65,10 @@ Lessons, all of which carry over to real creep databases:
    Building the physics into the target (Larson–Miller parameter) or using smooth models
    (GP, physics-feature ridge) is what makes extrapolation possible.
 3. **Small data favours smooth, physics-informed models** over deep/ensemble models.
-4. **Conformal intervals are only valid without distribution shift:** 90 % intervals cover
-   ~90 % of *new alloys* tested in the same temperature range, but far less when
-   extrapolating in temperature (see `results/report.json` → `uncertainty`).
+4. **Uncertainty estimates break under distribution shift:** 90 % split-conformal intervals
+   (GBM on the LMP target, half-width ≈ ±1 decade) cover **95 %** of tests on *new alloys*
+   in the training temperature range, but only **68 %** when extrapolating to T > 950 °C;
+   the GP's nominal 90 % intervals cover 79 % there.
 5. **Inverse design works but is optimistic:** the GP-UCB search found compositions whose
    *true* life at 1000 °C / 200 MPa (10^5.6 h) exceeds the best alloy in the training set
    (10^5.3 h), while the model over-predicted them (10^6.6 h) — exploit the model, then
