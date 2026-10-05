@@ -1,0 +1,7 @@
+model,R2,RMSE_log10,MAE_log10,within_factor_2
+Gaussian process,0.8911,0.2798,0.1862,0.8401
+Gradient boosting on LMP target,0.2591,0.7299,0.5488,0.3914
+Larson-Miller (no composition),-0.3631,0.9901,0.7916,0.2148
+Hybrid: LMP + gradient boosting,-1.0143,1.2035,1.0614,0.0859
+Random forest,-1.6219,1.3731,1.1803,0.1146
+Gradient boosting,-2.4922,1.5847,1.4120,0.0382

@@ -1,0 +1,24 @@
+{
+  "Ni_compact": {
+    "sample": "Ni powder compact",
+    "relative_density": 0.65,
+    "dT_centre_minus_pyrometer_end_of_ramp_K": 64.54506429215212,
+    "dT_centre_minus_pyrometer_end_of_hold_K": 56.200200263275974,
+    "radial_gradient_in_sample_end_of_hold_K": 19.96195771754492,
+    "current_end_of_hold_A": 1591.6945925907562,
+    "voltage_end_of_hold_V": 3.1992425840914915,
+    "power_end_of_hold_kW": 5.092217121484505,
+    "fraction_of_current_through_sample": 0.3268463476579546
+  },
+  "Al2O3_compact": {
+    "sample": "Al2O3 powder compact",
+    "relative_density": 0.6,
+    "dT_centre_minus_pyrometer_end_of_ramp_K": 44.11857564393608,
+    "dT_centre_minus_pyrometer_end_of_hold_K": 45.63286198287278,
+    "radial_gradient_in_sample_end_of_hold_K": 12.585825045636739,
+    "current_end_of_hold_A": 1560.4420985660472,
+    "voltage_end_of_hold_V": 3.1975490622491396,
+    "power_end_of_hold_kW": 4.989590168963944,
+    "fraction_of_current_through_sample": 7.753038793025834e-14
+  }
+}

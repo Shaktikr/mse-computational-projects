@@ -1,0 +1,180 @@
+{
+  "dataset": "MPEA dataset, Borg et al., Sci. Data 7, 430 (2020)",
+  "rows_total": 1545,
+  "phase_rows": 549,
+  "phase_counts": {
+    "IM": 200,
+    "BCC": 191,
+    "FCC": 89,
+    "FCC+BCC": 69
+  },
+  "phase_classification": [
+    {
+      "model": "Random forest",
+      "features": "descriptors + composition",
+      "accuracy": 0.7978142076502732,
+      "macro_F1": 0.7747572748016329
+    },
+    {
+      "model": "Gradient boosting",
+      "features": "descriptors + composition",
+      "accuracy": 0.7941712204007286,
+      "macro_F1": 0.7675714223680394
+    },
+    {
+      "model": "Random forest",
+      "features": "descriptors",
+      "accuracy": 0.7868852459016393,
+      "macro_F1": 0.7602085633664581
+    },
+    {
+      "model": "SVM (RBF)",
+      "features": "descriptors + composition",
+      "accuracy": 0.7795992714025501,
+      "macro_F1": 0.7511241300218348
+    },
+    {
+      "model": "Gradient boosting",
+      "features": "descriptors",
+      "accuracy": 0.7668488160291439,
+      "macro_F1": 0.7441965946270106
+    },
+    {
+      "model": "SVM (RBF)",
+      "features": "descriptors",
+      "accuracy": 0.7468123861566485,
+      "macro_F1": 0.7227725908723276
+    },
+    {
+      "model": "k-nearest neighbours",
+      "features": "descriptors + composition",
+      "accuracy": 0.7358834244080146,
+      "macro_F1": 0.7027415409695177
+    },
+    {
+      "model": "k-nearest neighbours",
+      "features": "descriptors",
+      "accuracy": 0.7249544626593807,
+      "macro_F1": 0.6967448081324543
+    },
+    {
+      "model": "Logistic regression",
+      "features": "descriptors + composition",
+      "accuracy": 0.6666666666666666,
+      "macro_F1": 0.6233150098386402
+    },
+    {
+      "model": "Logistic regression",
+      "features": "descriptors",
+      "accuracy": 0.6484517304189436,
+      "macro_F1": 0.6053940128293183
+    },
+    {
+      "model": "Empirical rules (Yang-Zhang \u03a9-\u03b4 + Guo VEC)",
+      "features": "descriptors",
+      "accuracy": 0.581056466302368,
+      "macro_F1": 0.561088373096003
+    }
+  ],
+  "phase_feature_importance": {
+    "VEC": 0.1344507251278202,
+    "dSmix": 0.01199214075646684,
+    "proc_CAST": 0.011040053474203337,
+    "gamma": 0.010763937420087365,
+    "dchi": 0.010468710375333168,
+    "x_Nb": 0.01029577717872654,
+    "dHmix": 0.008995849849767357,
+    "Tm": 0.008430160937718489,
+    "x_Al": 0.008332867029719915,
+    "x_Fe": 0.007589579618581555,
+    "Omega": 0.006709295860866771,
+    "Lambda": 0.006188139871884668,
+    "proc_ANNEAL": 0.005611705789082632,
+    "x_Ta": 0.004615317748981296,
+    "delta": 0.004555858365851062
+  },
+  "AlxCoCrFeNi_predicted_phase": {
+    "x=0": "FCC",
+    "x=0.1": "FCC",
+    "x=0.2": "FCC",
+    "x=0.3": "FCC",
+    "x=0.4": "FCC+BCC",
+    "x=0.5": "FCC+BCC",
+    "x=0.6": "FCC+BCC",
+    "x=0.7": "FCC+BCC",
+    "x=0.8": "FCC+BCC",
+    "x=0.9": "FCC+BCC",
+    "x=1": "BCC",
+    "x=1.1": "BCC",
+    "x=1.2": "BCC",
+    "x=1.3": "BCC",
+    "x=1.4": "BCC",
+    "x=1.5": "BCC",
+    "x=1.6": "BCC",
+    "x=1.7": "BCC",
+    "x=1.8": "BCC",
+    "x=1.9": "BCC",
+    "x=2": "BCC"
+  },
+  "mea_composite_constituents": [
+    {
+      "alloy": "Co1 Cr1 Fe1 Ni1",
+      "VEC": 8.25,
+      "delta": 1.176159002604296,
+      "dHmix": -3.75,
+      "Omega": 5.753156867913763,
+      "BCC": 0.0,
+      "FCC": 1.0,
+      "FCC+BCC": 0.0,
+      "IM": 0.0
+    },
+    {
+      "alloy": "Al1 Co1 Cr1 Fe1",
+      "VEC": 6.5,
+      "delta": 5.591769930776402,
+      "dHmix": -11.5,
+      "Omega": 1.6769427766305143,
+      "BCC": 0.522,
+      "FCC": 0.0,
+      "FCC+BCC": 0.393,
+      "IM": 0.085
+    },
+    {
+      "alloy": "Co1 Cr1 Ni1",
+      "VEC": 8.333333333333332,
+      "delta": 1.3525250699185076,
+      "dHmix": -4.888888888888888,
+      "Omega": 3.535001501847086,
+      "BCC": 0.0,
+      "FCC": 1.0,
+      "FCC+BCC": 0.0,
+      "IM": 0.0
+    },
+    {
+      "alloy": "Al0.3 Co1 Cr1 Fe1 Ni1",
+      "VEC": 7.88372093023256,
+      "delta": 3.6393218834384817,
+      "dHmix": -7.268793942671715,
+      "Omega": 3.1872489875131587,
+      "BCC": 0.0,
+      "FCC": 0.999,
+      "FCC+BCC": 0.0,
+      "IM": 0.0
+    }
+  ],
+  "strength_regression": [
+    {
+      "model": "Random forest",
+      "R2_log10YS": 0.7002173497271003,
+      "MAE_MPa": 218.09637436119357,
+      "median_abs_pct_error": 21.28209230893049
+    },
+    {
+      "model": "Gradient boosting",
+      "R2_log10YS": 0.7038099432106815,
+      "MAE_MPa": 217.5570065149301,
+      "median_abs_pct_error": 20.847671306536764
+    }
+  ],
+  "strength_rows": 1067
+}

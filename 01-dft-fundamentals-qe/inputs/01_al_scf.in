@@ -1,0 +1,36 @@
+! =====================================================================================
+!  Lesson 1: your first pw.x calculation - self-consistent field (SCF) run for fcc Al
+!  Run:   pw.x -in 01_al_scf.in > 01_al_scf.out
+!  Look for the line starting with "!" in the output: that is the converged total energy.
+! =====================================================================================
+&CONTROL
+   calculation = 'scf'          ! single-point energy at fixed atoms and cell
+   prefix      = 'al'           ! name used for the temporary files
+   outdir      = './tmp'        ! scratch directory (wavefunctions, charge density)
+   pseudo_dir  = '../pseudo'    ! where the .UPF pseudopotential files are
+   tprnfor     = .true.         ! print forces on atoms (zero here by symmetry)
+   tstress     = .true.         ! print the stress tensor - useful to check the lattice parameter
+/
+&SYSTEM
+   ibrav       = 2              ! Bravais lattice index 2 = face-centred cubic
+   celldm(1)   = 7.6534         ! lattice parameter a in BOHR (4.05 A / 0.529177 = 7.6534)
+   nat         = 1              ! atoms in the (primitive) cell
+   ntyp        = 1              ! number of species
+   ecutwfc     = 35.0           ! plane-wave cut-off for wavefunctions (Ry) - from convergence test
+   ecutrho     = 280.0          ! cut-off for charge density; 8-12 x ecutwfc for ultrasoft PPs
+   occupations = 'smearing'     ! Al is a metal: fractional occupations near the Fermi level
+   smearing    = 'mv'           ! Marzari-Vanderbilt "cold" smearing (small error in total energy)
+   degauss     = 0.02           ! smearing width (Ry); test 0.01-0.03
+/
+&ELECTRONS
+   conv_thr    = 1.0d-9         ! SCF convergence threshold on the estimated energy error (Ry)
+   mixing_beta = 0.4            ! charge-density mixing; lower it if SCF does not converge
+/
+ATOMIC_SPECIES
+!  label  mass(amu)  pseudopotential file
+   Al     26.9815    Al.pbe-n-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+   Al  0.0  0.0  0.0
+K_POINTS automatic
+!  Monkhorst-Pack grid n1 n2 n3 and offsets (0 = Gamma-centred)
+   18 18 18  0 0 0

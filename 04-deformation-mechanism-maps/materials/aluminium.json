@@ -1,0 +1,22 @@
+{
+  "name": "Aluminium (pure, Frost & Ashby 1982)",
+  "source": "H.J. Frost and M.F. Ashby, Deformation-Mechanism Maps, Pergamon (1982), Ch. 4 data table for Al. Values transcribed for teaching - verify against the book before publication use.",
+  "Omega_m3": 1.66e-29,
+  "b_m": 2.86e-10,
+  "Tm_K": 933,
+  "mu0_MPa": 2.54e4,
+  "TdmudT": -0.50,
+  "D0v_m2s": 1.7e-4,
+  "Qv_kJ": 142,
+  "deltaD0b_m3s": 5.0e-14,
+  "Qb_kJ": 84,
+  "acD0c_m4s": 7.0e-25,
+  "Qc_kJ": 82,
+  "n": 4.4,
+  "A": 3.4e6,
+  "alpha_plb": 1000,
+  "tau_hat0_over_mu0": 4.4e-3,
+  "dF_over_mu0b3": 0.5,
+  "gamma0_dot": 1.0e6,
+  "ideal_strength_over_mu": 0.06
+}

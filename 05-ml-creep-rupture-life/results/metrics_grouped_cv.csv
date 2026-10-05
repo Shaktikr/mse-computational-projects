@@ -1,0 +1,9 @@
+model,R2,RMSE_log10,MAE_log10,within_factor_2,time_s
+Gaussian process,0.9567,0.2004,0.1568,0.8790,237.7510
+Ridge (linear),0.8887,0.3212,0.2452,0.6831,0.0675
+Gradient boosting,0.7886,0.4428,0.3526,0.4988,30.8080
+Gradient boosting on LMP target,0.7833,0.4483,0.3535,0.5086,17.7309
+Hybrid: LMP + gradient boosting,0.7734,0.4584,0.3640,0.4947,60.5953
+Neural network (MLP),0.7126,0.5162,0.4127,0.4206,5.8553
+Random forest,0.6112,0.6005,0.4907,0.3465,8.9193
+Larson-Miller (no composition),0.2682,0.8238,0.6792,0.2543,0.0378

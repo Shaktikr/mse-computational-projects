@@ -1,0 +1,46 @@
+! =====================================================================================
+!  Lesson 3: an ordered intermetallic - variable-cell relaxation of B2 NiAl
+!  'vc-relax' moves atoms AND changes the cell until forces and stress vanish, giving the
+!  equilibrium lattice parameter directly (cross-check it against the EOS fit, step 2).
+!  B2 = CsCl structure: Ni at the cube corner, Al at the body centre (simple cubic, ibrav=1).
+! =====================================================================================
+&CONTROL
+   calculation   = 'vc-relax'
+   prefix        = 'nial'
+   outdir        = './tmp'
+   pseudo_dir    = '../pseudo'
+   tstress       = .true.
+   tprnfor       = .true.
+   etot_conv_thr = 1.0d-6                ! energy convergence between ionic steps (Ry)
+   forc_conv_thr = 1.0d-4                ! force convergence (Ry/bohr)
+/
+&SYSTEM
+   ibrav       = 1                       ! simple cubic
+   celldm(1)   = 5.4557                  ! 2.887 A in bohr
+   nat         = 2
+   ntyp        = 2
+   ecutwfc     = 45.0
+   ecutrho     = 360.0
+   occupations = 'smearing'
+   smearing    = 'mv'
+   degauss     = 0.02
+/
+&ELECTRONS
+   conv_thr    = 1.0d-10
+/
+&IONS
+   ion_dynamics = 'bfgs'
+/
+&CELL
+   cell_dynamics = 'bfgs'
+   press_conv_thr = 0.1                  ! kbar
+   cell_dofree   = 'ibrav'               ! keep the cubic symmetry while relaxing
+/
+ATOMIC_SPECIES
+   Ni  58.6934  Ni.pbe-n-rrkjus_psl.1.0.0.UPF
+   Al  26.9815  Al.pbe-n-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+   Ni  0.0  0.0  0.0
+   Al  0.5  0.5  0.5
+K_POINTS automatic
+   14 14 14  0 0 0

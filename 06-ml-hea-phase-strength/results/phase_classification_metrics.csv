@@ -1,0 +1,12 @@
+model,features,accuracy,macro_F1
+Random forest,descriptors + composition,0.798,0.775
+Gradient boosting,descriptors + composition,0.794,0.768
+Random forest,descriptors,0.787,0.760
+SVM (RBF),descriptors + composition,0.780,0.751
+Gradient boosting,descriptors,0.767,0.744
+SVM (RBF),descriptors,0.747,0.723
+k-nearest neighbours,descriptors + composition,0.736,0.703
+k-nearest neighbours,descriptors,0.725,0.697
+Logistic regression,descriptors + composition,0.667,0.623
+Logistic regression,descriptors,0.648,0.605
+Empirical rules (Yang-Zhang Ω-δ + Guo VEC),descriptors,0.581,0.561

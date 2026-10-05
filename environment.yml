@@ -1,0 +1,21 @@
+name: msecomp
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - pillow
+  - pytest
+  - ase
+  - pymatgen
+  - shap
+  - qe            # Quantum ESPRESSO (pw.x, neb.x, ...) - projects 01-02
+  - lammps        # LAMMPS with Python module - project 09
+  - openmpi
+  - pip
+  - pip:
+      - matminer

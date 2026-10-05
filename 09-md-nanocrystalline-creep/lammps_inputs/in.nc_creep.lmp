@@ -1,0 +1,48 @@
+# ------------------------------------------------------------------------------------
+# Constant-stress creep of a nanocrystalline metal - plain LAMMPS input for a cluster
+#   mpirun -np 64 lmp -in in.nc_creep.lmp -var T 1300 -var sigma 1.0 -var data nc.data
+# Build nc.data with scripts/build_polycrystal.py (or Atomsk) - production runs should use
+# >= 15 nm boxes with 10-20 grains and >= 1 ns of creep.
+# ------------------------------------------------------------------------------------
+variable T      index 1300          # K
+variable sigma  index 1.0           # GPa, uniaxial tension along x
+variable data   index nc.data
+variable pot    index ../potentials/Ni_u3.eam
+variable teq    index 50            # ps equilibration
+variable tcr    index 1000          # ps creep
+
+units           metal
+atom_style      atomic
+boundary        p p p
+read_data       ${data}
+pair_style      eam
+pair_coeff      1 1 ${pot}
+neighbor        1.0 bin
+neigh_modify    every 1 delay 0 check yes
+timestep        0.002
+
+# 1. relax grain boundaries at 0 K
+fix             relax all box/relax iso 0.0 vmax 0.001
+minimize        1e-8 1e-10 5000 50000
+unfix           relax
+reset_timestep  0
+compute         cna all cna/atom 3.006        # 0.854 a for fcc Ni (1 = fcc, 5 = other)
+
+# 2. equilibrate at T, zero stress
+velocity        all create ${T} 4928459 mom yes rot yes dist gaussian
+fix             eq all npt temp ${T} ${T} 0.1 aniso 0.0 0.0 1.0
+thermo          1000
+thermo_style    custom step temp pxx pyy pzz lx ly lz pe
+run             $(v_teq/dt)
+unfix           eq
+reset_timestep  0
+
+# 3. creep: constant tensile stress sigma_xx (LAMMPS pressure = -stress, 1 GPa = 1e4 bar)
+variable        p equal -${sigma}*1.0e4
+variable        L0 equal lx
+variable        Lx0 equal ${L0}
+variable        strain equal lx/v_Lx0-1.0
+fix             creep all npt temp ${T} ${T} 0.1 x ${p} ${p} 1.0 y 0.0 0.0 1.0 z 0.0 0.0 1.0 couple none
+fix             out all print 500 "$(step*dt:%.3f) $(v_strain:%.6f) $(temp:%.1f) $(pxx/1.0e4:%.4f)" file creep_T${T}_s${sigma}.txt screen no title "# t_ps strain T pxx_GPa"
+dump            d all custom 50000 dump.creep.* id type x y z c_cna
+run             $(v_tcr/dt)

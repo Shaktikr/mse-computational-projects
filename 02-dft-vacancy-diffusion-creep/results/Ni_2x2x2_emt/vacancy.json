@@ -1,0 +1,25 @@
+{
+  "element": "Ni",
+  "a0_A": 3.4871442502872756,
+  "settings": {
+    "calc": "emt",
+    "ecutwfc": 45.0,
+    "kspacing": 0.2,
+    "degauss": 0.02,
+    "fmax": 0.01,
+    "workdir": "/home/claude/mse-computational-projects/02-dft-vacancy-diffusion-creep/runs/emt/Ni_2x2x2"
+  },
+  "kmesh": [
+    5,
+    5,
+    5
+  ],
+  "n_sites": 32,
+  "E_perfect_eV": -0.4258205539152904,
+  "E_vac_unrelaxed_eV": 1.5124524429821138,
+  "E_vac_relaxed_eV": 1.4953561481741433,
+  "Ef_unrelaxed_eV": 1.9249661045875515,
+  "Ef_relaxed_eV": 1.907869809779581,
+  "relaxation_energy_eV": -0.01709629480797048,
+  "max_nn_displacement_A": 0.01557006957040836
+}

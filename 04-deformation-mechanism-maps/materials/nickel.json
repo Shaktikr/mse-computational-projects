@@ -1,0 +1,22 @@
+{
+  "name": "Nickel (pure, Frost & Ashby 1982)",
+  "source": "H.J. Frost and M.F. Ashby, Deformation-Mechanism Maps, Pergamon (1982), Ch. 4 data table for Ni. Values transcribed for teaching - verify against the book before publication use.",
+  "Omega_m3": 1.09e-29,
+  "b_m": 2.49e-10,
+  "Tm_K": 1726,
+  "mu0_MPa": 7.89e4,
+  "TdmudT": -0.64,
+  "D0v_m2s": 1.9e-4,
+  "Qv_kJ": 284,
+  "deltaD0b_m3s": 3.5e-15,
+  "Qb_kJ": 115,
+  "acD0c_m4s": 3.1e-23,
+  "Qc_kJ": 170,
+  "n": 4.6,
+  "A": 3.0e6,
+  "alpha_plb": 1000,
+  "tau_hat0_over_mu0": 6.3e-3,
+  "dF_over_mu0b3": 0.5,
+  "gamma0_dot": 1.0e6,
+  "ideal_strength_over_mu": 0.06
+}

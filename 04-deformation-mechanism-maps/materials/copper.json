@@ -1,0 +1,22 @@
+{
+  "name": "Copper (pure, Frost & Ashby 1982)",
+  "source": "H.J. Frost and M.F. Ashby, Deformation-Mechanism Maps, Pergamon (1982), Ch. 4 data table for Cu. Values transcribed for teaching - verify against the book before publication use.",
+  "Omega_m3": 1.18e-29,
+  "b_m": 2.56e-10,
+  "Tm_K": 1356,
+  "mu0_MPa": 4.21e4,
+  "TdmudT": -0.54,
+  "D0v_m2s": 2.0e-5,
+  "Qv_kJ": 197,
+  "deltaD0b_m3s": 5.0e-15,
+  "Qb_kJ": 104,
+  "acD0c_m4s": 1.0e-24,
+  "Qc_kJ": 117,
+  "n": 4.8,
+  "A": 7.4e5,
+  "alpha_plb": 794,
+  "tau_hat0_over_mu0": 6.3e-3,
+  "dF_over_mu0b3": 0.5,
+  "gamma0_dot": 1.0e6,
+  "ideal_strength_over_mu": 0.06
+}

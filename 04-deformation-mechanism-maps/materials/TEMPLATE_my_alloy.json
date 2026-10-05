@@ -1,0 +1,22 @@
+{
+  "name": "My alloy - fill in from your own creep data / DFT / literature",
+  "source": "Explain where every number comes from. Omega and b from the lattice parameter (XRD or DFT, project 01); mu0 and dmu/dT from elastic constants (DFT project 01 or ultrasonic measurement); D0v, Qv from tracer-diffusion data or DFT (project 02); n, A from your own creep tests (project 03, global power-law fit).",
+  "Omega_m3": 1.10e-29,
+  "b_m": 2.50e-10,
+  "Tm_K": 1700,
+  "mu0_MPa": 8.0e4,
+  "TdmudT": -0.5,
+  "D0v_m2s": 1.0e-4,
+  "Qv_kJ": 280,
+  "deltaD0b_m3s": 5.0e-15,
+  "Qb_kJ": 140,
+  "acD0c_m4s": 1.0e-23,
+  "Qc_kJ": 170,
+  "n": 5.0,
+  "A": 1.0e6,
+  "alpha_plb": 1000,
+  "tau_hat0_over_mu0": 6.0e-3,
+  "dF_over_mu0b3": 0.5,
+  "gamma0_dot": 1.0e6,
+  "ideal_strength_over_mu": 0.06
+}

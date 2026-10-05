@@ -1,0 +1,3 @@
+model,R2_log10YS,MAE_MPa,median_abs_pct_error
+Random forest,0.700,218.096,21.282
+Gradient boosting,0.704,217.557,20.848

@@ -1,0 +1,17 @@
+# raw DFT / MD run directories (large; results/ keeps the processed outputs)
+runs/
+**/tmp/
+*.save/
+*.wfc*
+*.mix*
+*.out.*
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+# compiled helper
+01-dft-fundamentals-qe/tools/*.so
+# MD scratch
+09-md-nanocrystalline-creep/results/*/polycrystal.data

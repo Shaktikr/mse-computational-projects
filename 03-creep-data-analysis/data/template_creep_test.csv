@@ -1,0 +1,19 @@
+# specimen_id: MY-ALLOY-T700-S150
+# stress_MPa: 150
+# temperature_C: 700
+# ruptured: true
+# material: replace with alloy name / processing route (e.g. CoCrFeNi, MA + SPS 1000 C)
+# note: one file per test; column 'strain' (engineering) OR 'displacement_mm' + '# gauge_length_mm: 25'
+time_h,strain
+0.0,0.0021
+0.5,0.0040
+1.0,0.0049
+2.0,0.0061
+4.0,0.0080
+8.0,0.0115
+16.0,0.0183
+24.0,0.0255
+32.0,0.0340
+40.0,0.0460
+46.0,0.0650
+50.0,0.0950

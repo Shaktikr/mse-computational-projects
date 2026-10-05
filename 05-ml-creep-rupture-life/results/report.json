@@ -1,0 +1,191 @@
+{
+  "synthetic_data": true,
+  "n_tests": 1215,
+  "n_alloys": 120,
+  "features": [
+    "Cr",
+    "Co",
+    "Mo",
+    "W",
+    "Re",
+    "Al",
+    "Ti",
+    "Ta",
+    "Nb",
+    "Hf",
+    "C",
+    "B",
+    "single_crystal",
+    "solution_T_C",
+    "aging_T_C",
+    "T_C",
+    "stress_MPa",
+    "invT",
+    "log_sigma",
+    "log_sigma2",
+    "sig_invT",
+    "gp_index",
+    "refractory",
+    "Al_Ti",
+    "dT_solution"
+  ],
+  "grouped_cv": [
+    {
+      "model": "Gaussian process",
+      "R2": 0.9566862756551261,
+      "RMSE_log10": 0.20041264602851405,
+      "MAE_log10": 0.15679064133960774,
+      "within_factor_2": 0.8790123456790123,
+      "time_s": 237.7509889602661
+    },
+    {
+      "model": "Ridge (linear)",
+      "R2": 0.8887434332504531,
+      "RMSE_log10": 0.32119973985651534,
+      "MAE_log10": 0.24522175373738442,
+      "within_factor_2": 0.6831275720164609,
+      "time_s": 0.06748080253601074
+    },
+    {
+      "model": "Gradient boosting",
+      "R2": 0.7885956766389907,
+      "RMSE_log10": 0.4427609292082141,
+      "MAE_log10": 0.35259551620317775,
+      "within_factor_2": 0.49876543209876545,
+      "time_s": 30.80797839164734
+    },
+    {
+      "model": "Gradient boosting on LMP target",
+      "R2": 0.7833206504799969,
+      "RMSE_log10": 0.4482508476056117,
+      "MAE_log10": 0.3534983972779786,
+      "within_factor_2": 0.508641975308642,
+      "time_s": 17.730920553207397
+    },
+    {
+      "model": "Hybrid: LMP + gradient boosting",
+      "R2": 0.7734256196264138,
+      "RMSE_log10": 0.4583716599384624,
+      "MAE_log10": 0.36396410888176756,
+      "within_factor_2": 0.49465020576131685,
+      "time_s": 60.59534740447998
+    },
+    {
+      "model": "Neural network (MLP)",
+      "R2": 0.7125991958864971,
+      "RMSE_log10": 0.5162455811862781,
+      "MAE_log10": 0.41265121736583915,
+      "within_factor_2": 0.4205761316872428,
+      "time_s": 5.855321645736694
+    },
+    {
+      "model": "Random forest",
+      "R2": 0.6111606978050789,
+      "RMSE_log10": 0.6004784629688881,
+      "MAE_log10": 0.49066330063967645,
+      "within_factor_2": 0.3465020576131687,
+      "time_s": 8.91930603981018
+    },
+    {
+      "model": "Larson-Miller (no composition)",
+      "R2": 0.26818919662013707,
+      "RMSE_log10": 0.8237809907364959,
+      "MAE_log10": 0.6791924989217341,
+      "within_factor_2": 0.254320987654321,
+      "time_s": 0.037793636322021484
+    }
+  ],
+  "leakage_demo": [
+    {
+      "model": "Random forest",
+      "RMSE_random_KFold": 0.544062360665206,
+      "RMSE_GroupKFold": 0.6004784629688881,
+      "R2_random_KFold": 0.6807928229970523,
+      "R2_GroupKFold": 0.6111606978050789
+    },
+    {
+      "model": "Gradient boosting",
+      "RMSE_random_KFold": 0.2998334548864064,
+      "RMSE_GroupKFold": 0.4427609292082141,
+      "R2_random_KFold": 0.9030527571698501,
+      "R2_GroupKFold": 0.7885956766389907
+    }
+  ],
+  "extrapolation_T_gt_950C": [
+    {
+      "model": "Gaussian process",
+      "R2": 0.8911371366669478,
+      "RMSE_log10": 0.2797938579343724,
+      "MAE_log10": 0.1861620987301543,
+      "within_factor_2": 0.8400954653937948
+    },
+    {
+      "model": "Gradient boosting on LMP target",
+      "R2": 0.2590698995780074,
+      "RMSE_log10": 0.7299395900054967,
+      "MAE_log10": 0.5487540376999632,
+      "within_factor_2": 0.3914081145584726
+    },
+    {
+      "model": "Larson-Miller (no composition)",
+      "R2": -0.36308534015346106,
+      "RMSE_log10": 0.990056144812333,
+      "MAE_log10": 0.7915511833634595,
+      "within_factor_2": 0.21479713603818615
+    },
+    {
+      "model": "Hybrid: LMP + gradient boosting",
+      "R2": -1.014253622914099,
+      "RMSE_log10": 1.2035257226930154,
+      "MAE_log10": 1.0613586467202045,
+      "within_factor_2": 0.08591885441527446
+    },
+    {
+      "model": "Random forest",
+      "R2": -1.6219072207167464,
+      "RMSE_log10": 1.3731151531231085,
+      "MAE_log10": 1.1802768092251348,
+      "within_factor_2": 0.11455847255369929
+    },
+    {
+      "model": "Gradient boosting",
+      "R2": -2.492206519852971,
+      "RMSE_log10": 1.5847043843435853,
+      "MAE_log10": 1.4119705883976374,
+      "within_factor_2": 0.03818615751789976
+    }
+  ],
+  "uncertainty": {
+    "gp_coverage_90_extrapolation": 0.7947494033412887,
+    "conformal_model": "Gradient boosting on LMP target",
+    "conformal_90_halfwidth_log10": 0.9804094048810319,
+    "conformal_90_coverage_new_alloys": 0.9549180327868853,
+    "conformal_90_coverage_extrapolation_T_gt_950C": 0.684964200477327
+  },
+  "feature_importance_top10": {
+    "T_C": 0.8343829319260421,
+    "stress_MPa": 0.7262576078311083,
+    "gp_index": 0.27953779909579457,
+    "Re": 0.26272820017922377,
+    "refractory": 0.14350824499509265,
+    "Al": 0.13038287046909702,
+    "solution_T_C": 0.0917634481670073,
+    "Mo": 0.0727276509327543,
+    "W": 0.06952092694822072,
+    "Ti": 0.06858959981010546
+  },
+  "design": {
+    "condition": "1000 C / 200 MPa",
+    "best_training_alloy_true_log10_life": 5.2867803694740445,
+    "designed_true_log10_life_top3": [
+      5.605397709271109,
+      5.245076791312506,
+      5.166531305270009
+    ],
+    "designed_pred_log10_life_top3": [
+      6.6216551603161795,
+      6.574899471979532,
+      6.47048362042236
+    ]
+  }
+}

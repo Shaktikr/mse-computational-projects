@@ -1,0 +1,40 @@
+{
+  "true_model": {
+    "n": 2.0,
+    "p": 2.0,
+    "Q_kJ": 190.0,
+    "D0_diff": 0.001,
+    "G_m": 2e-06
+  },
+  "note": "SYNTHETIC densification curves generated from the 'true' model above",
+  "MSC_Q_kJ": 192.340653165798,
+  "bernard_granger": {
+    "n_per_hold": [
+      2.0104022708468685,
+      2.006464747641658,
+      2.0100802718706805,
+      2.0076638134086906
+    ],
+    "n_mean": 2.0086527759419743,
+    "D_ref": 0.7868037121631011,
+    "Q_kJ": 190.34903408477098,
+    "D_eff_estimated": {
+      "1073K": 5.931233108895359e-13,
+      "1098K": 9.62790131883288e-13,
+      "1123K": 1.5289820602252565e-12,
+      "1148K": 2.3921304484811684e-12
+    },
+    "D_eff_true": {
+      "1073K": 5.633827170447396e-13,
+      "1098K": 9.149459208297699e-13,
+      "1123K": 1.454156072695051e-12,
+      "1148K": 2.264972178982486e-12
+    }
+  },
+  "temperature_measurement_bias": {
+    "centre_minus_pyrometer_K": 56.200000000000045,
+    "Q_using_true_T_kJ": 191.1937341599178,
+    "Q_using_pyrometer_T_kJ": 173.69962918861464,
+    "comment": "A constant offset dT between sample and pyrometer biases Q by roughly Q*(1 - T_meas^2/T_true^2)."
+  }
+}
