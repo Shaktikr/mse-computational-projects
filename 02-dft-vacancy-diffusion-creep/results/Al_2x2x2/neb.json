@@ -1,0 +1,15 @@
+{
+  "element": "Al",
+  "jumper_index": 13,
+  "method": "constrained midpoint relaxation",
+  "energies_eV": [
+    0.0,
+    0.6221941425337718,
+    0.0
+  ],
+  "Em_eV": 0.6221941425337718,
+  "saddle_index": 1,
+  "converged": true,
+  "E_initial_eV": -2125.241404711667,
+  "E_saddle_eV": -2124.6192105691334
+}

@@ -9,3 +9,4 @@ EL="${2:-Al}"
 python3 scripts/01_vacancy_formation.py    --element "$EL"
 python3 scripts/02_vacancy_migration_neb.py --element "$EL" --method midpoint
 python3 scripts/03_diffusion_and_creep.py   --element "$EL"
+python3 scripts/04_kpoint_check.py      --element "$EL" --kspacings 0.13   # k-point convergence of E_f

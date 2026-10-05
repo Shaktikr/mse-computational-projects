@@ -34,7 +34,9 @@ def main():
     p = parser(__doc__)
     p.add_argument("--method", default="midpoint", choices=["midpoint", "neb"])
     p.add_argument("--images", type=int, default=3, help="NEB: intermediate images (odd -> one at the saddle)")
-    p.add_argument("--fmax", type=float, default=0.05)
+    p.add_argument("--fmax", type=float, default=0.05, help="NEB force tolerance (eV/A)")
+    p.add_argument("--saddle-fmax", type=float, default=0.03,
+                   help="midpoint: force tolerance of the constrained relaxation (eV/A)")
     args = p.parse_args()
     s = settings(args)
     out = out_dir(args)
@@ -45,7 +47,8 @@ def main():
 
     if args.method == "midpoint":
         E_init = json.loads((out / "vacancy.json").read_text())["E_vac_relaxed_eV"]
-        saddle, E_sad = relax_positions(midpoint_state(perfect, j), s, "saddle_midpoint_relaxed")
+        s_sad = type(s)(**{**s.to_dict(), "fmax": args.saddle_fmax})
+        saddle, E_sad = relax_positions(midpoint_state(perfect, j), s_sad, "saddle_midpoint_relaxed")
         Em = E_sad - E_init
         energies = [0.0, Em, 0.0]  # end states are equivalent by symmetry
         res = {"method": "constrained midpoint relaxation", "energies_eV": energies, "Em_eV": Em,

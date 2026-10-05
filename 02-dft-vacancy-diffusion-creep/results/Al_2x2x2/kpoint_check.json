@@ -1,0 +1,16 @@
+{
+  "element": "Al",
+  "relaxation_energy_eV": -0.07650317305524368,
+  "runs": [
+    {
+      "kspacing": 0.13,
+      "kmesh": [
+        6,
+        6,
+        6
+      ],
+      "Ef_unrelaxed_eV": 0.7116121444996679,
+      "Ef_relaxed_estimate_eV": 0.6351089714444242
+    }
+  ]
+}

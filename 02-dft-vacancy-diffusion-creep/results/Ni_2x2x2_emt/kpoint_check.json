@@ -1,0 +1,26 @@
+{
+  "element": "Ni",
+  "relaxation_energy_eV": -0.01709629480797048,
+  "runs": [
+    {
+      "kspacing": 0.2,
+      "kmesh": [
+        5,
+        5,
+        5
+      ],
+      "Ef_unrelaxed_eV": 1.9249661045875515,
+      "Ef_relaxed_estimate_eV": 1.907869809779581
+    },
+    {
+      "kspacing": 0.13,
+      "kmesh": [
+        7,
+        7,
+        7
+      ],
+      "Ef_unrelaxed_eV": 1.9249661045875515,
+      "Ef_relaxed_estimate_eV": 1.907869809779581
+    }
+  ]
+}
