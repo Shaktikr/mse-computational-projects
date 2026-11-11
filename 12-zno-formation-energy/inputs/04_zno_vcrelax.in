@@ -1,0 +1,47 @@
+! =====================================================================================
+!  Lesson 4 - let ZnO find its own (PBE) structure: variable-cell relaxation
+!      mpirun -np 4 pw.x -in 04_zno_vcrelax.in > 04_zno_vcrelax.out
+!  pw.x repeats  SCF -> forces and stress -> move atoms, reshape cell  until both vanish.
+!  The relaxed cell and atomic positions are printed near the end of the output:
+!      grep -A 13 'Begin final coordinates' 04_zno_vcrelax.out
+!  Expected result: see the table in README.md (PBE lattice parameters come out 1-2 % too large)
+! =====================================================================================
+&CONTROL
+   calculation   = 'vc-relax'   ! move the atoms AND change the cell until forces and pressure vanish
+   prefix        = 'zno_vc'
+   outdir        = './tmp'
+   pseudo_dir    = '../pseudo'
+   forc_conv_thr = 1.0d-4       ! finished when every force is below this (Ry/bohr)
+/
+&SYSTEM
+   ibrav       = 0
+   nat         = 4
+   ntyp        = 2
+   ecutwfc     = 60             ! production cut-offs, chosen from the convergence test;
+   ecutrho     = 480            !   a little higher than for lesson 1 because stress converges slowly
+   occupations = 'fixed'
+/
+&ELECTRONS
+   conv_thr    = 1.0d-9
+   mixing_beta = 0.5
+/
+&IONS
+/
+&CELL
+   press_conv_thr = 0.1         ! finished when the pressure is below this (kbar)
+/
+ATOMIC_SPECIES
+   Zn  65.38   Zn.pbe-dn-kjpaw_psl.0.2.2.UPF
+   O   15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+#  starting guess = the measured cell (any sensible guess works; pw.x improves it)
+   3.2500000000   0.0000000000   0.0000000000
+  -1.6250000000   2.8145825623   0.0000000000
+   0.0000000000   0.0000000000   5.2070000000
+ATOMIC_POSITIONS crystal
+   Zn  0.3333333333  0.6666666667  0.0000000000
+   Zn  0.6666666667  0.3333333333  0.5000000000
+   O   0.3333333333  0.6666666667  0.3820000000
+   O   0.6666666667  0.3333333333  0.8820000000
+K_POINTS automatic
+   8 8 5  0 0 0

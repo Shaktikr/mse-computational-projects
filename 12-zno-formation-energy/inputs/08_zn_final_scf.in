@@ -1,0 +1,40 @@
+! =====================================================================================
+!  Lesson 8 - final energy of hcp Zn at its relaxed (PBE) structure
+!  The cell and the positions below were copied from the end of 05_zn_vcrelax.out
+!  (the block between "Begin final coordinates" and "End final coordinates").
+!      mpirun -np 4 pw.x -in 08_zn_final_scf.in > 08_zn_final_scf.out
+!      grep '^!' 08_zn_final_scf.out
+! =====================================================================================
+&CONTROL
+   calculation = 'scf'
+   prefix      = 'zn_final'
+   outdir      = './tmp'
+   pseudo_dir  = '../pseudo'
+   tprnfor     = .true.
+   tstress     = .true.
+/
+&SYSTEM
+   ibrav       = 0
+   nat         = 2
+   ntyp        = 1
+   ecutwfc     = 60             ! the three final energies (ZnO, Zn, O2) use identical cut-offs
+   ecutrho     = 480
+   occupations = 'smearing'
+   smearing    = 'mv'
+   degauss     = 0.02
+/
+&ELECTRONS
+   conv_thr    = 1.0d-9
+   mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+   Zn  65.38   Zn.pbe-dn-kjpaw_psl.0.2.2.UPF
+CELL_PARAMETERS angstrom
+    2.6284164320    0.0000000000   -0.0000000000
+   -1.3142082160    2.2762754020   -0.0000000000
+   -0.0000000000    0.0000000000    5.1482373480
+ATOMIC_POSITIONS crystal
+   Zn  0.3333333333  0.6666666667  0.2500000000
+   Zn  0.6666666667  0.3333333333  0.7500000000
+K_POINTS automatic
+   20 20 10  0 0 0

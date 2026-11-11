@@ -1,0 +1,40 @@
+! =====================================================================================
+!  Lesson 2 - hcp zinc metal.  New idea: a METAL needs smearing and many more k-points.
+!      mpirun -np 4 pw.x -in 02_zn_scf.in > 02_zn_scf.out
+!  Expected:  -487.67034605 Ry,  Fermi energy 11.1057 eV,  P = -16.84 kbar,  about half a minute
+! =====================================================================================
+&CONTROL
+   calculation = 'scf'
+   prefix      = 'zn'
+   outdir      = './tmp'
+   pseudo_dir  = '../pseudo'
+   tprnfor     = .true.
+   tstress     = .true.
+/
+&SYSTEM
+   ibrav       = 0
+   nat         = 2              ! 2 Zn atoms in the hcp cell
+   ntyp        = 1
+   ecutwfc     = 50             ! SAME cut-offs as for ZnO and O2: total energies can only be
+   ecutrho     = 400            !   subtracted when pseudopotentials and cut-offs are identical
+   occupations = 'smearing'     ! metal: bands cross the Fermi level, so occupations are fractional
+   smearing    = 'mv'           ! Marzari-Vanderbilt "cold" smearing
+   degauss     = 0.02           ! smearing width (Ry)
+/
+&ELECTRONS
+   conv_thr    = 1.0d-9
+   mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+   Zn  65.38   Zn.pbe-dn-kjpaw_psl.0.2.2.UPF
+CELL_PARAMETERS angstrom
+#  hcp cell built from the measured a = 2.665 A and c = 4.947 A (same recipe as for ZnO)
+   2.6650000000   0.0000000000   0.0000000000
+  -1.3325000000   2.3079577011   0.0000000000
+   0.0000000000   0.0000000000   4.9470000000
+ATOMIC_POSITIONS crystal
+   Zn  0.3333333333  0.6666666667  0.2500000000
+   Zn  0.6666666667  0.3333333333  0.7500000000
+K_POINTS automatic
+#  a metal needs a much denser k-point grid than an insulator
+   16 16 8  0 0 0

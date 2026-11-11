@@ -1,0 +1,42 @@
+! =====================================================================================
+!  Lesson 3 - the O2 molecule.  New ideas: a molecule in an empty box, and SPIN.
+!      mpirun -np 4 pw.x -in 03_o2_scf.in > 03_o2_scf.out
+!  Expected:  -83.04473183 Ry,  "total magnetization = 2.00 Bohr mag/cell",  about one minute
+! =====================================================================================
+&CONTROL
+   calculation = 'scf'
+   prefix      = 'o2'
+   outdir      = './tmp'
+   pseudo_dir  = '../pseudo'
+   tprnfor     = .true.
+   tstress     = .true.
+/
+&SYSTEM
+   ibrav       = 0
+   nat         = 2
+   ntyp        = 1
+   ecutwfc     = 50             ! same cut-offs as ZnO and Zn
+   ecutrho     = 400
+   occupations = 'fixed'        ! a molecule has separate energy levels with a gap
+   nspin       = 2              ! spin-polarised: spin-up and spin-down electrons treated separately
+   tot_magnetization = 2        ! O2 has 2 unpaired electrons (triplet ground state): N_up - N_down = 2
+   starting_magnetization(1) = 0.5   ! starting guess for the spin polarisation of species 1 (O)
+/
+&ELECTRONS
+   conv_thr    = 1.0d-9
+   mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+   O   15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+#  An empty box about 10 A wide. pw.x always repeats the cell periodically, so the box must be
+#  large enough that the molecule does not feel its own copies (checked in the convergence test).
+#  The edges are slightly unequal so that the box does not force extra symmetry on the molecule.
+  10.0000000000   0.0000000000   0.0000000000
+   0.0000000000  10.4000000000   0.0000000000
+   0.0000000000   0.0000000000  10.8000000000
+ATOMIC_POSITIONS crystal
+#  two O atoms 1.21 A apart along z, centred in the box  (1.21 A / 10.8 A = 0.1120 of the z edge)
+   O  0.5000000000  0.5000000000  0.4439814815
+   O  0.5000000000  0.5000000000  0.5560185185
+K_POINTS gamma

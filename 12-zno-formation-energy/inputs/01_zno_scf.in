@@ -1,0 +1,50 @@
+! =====================================================================================
+!  Lesson 1 - wurtzite ZnO: one self-consistent (SCF) total-energy calculation
+!  Run inside this folder, after "conda activate dft":
+!      mpirun -np 4 pw.x -in 01_zno_scf.in > 01_zno_scf.out
+!  Then:  grep '^!' 01_zno_scf.out          -> the converged total energy (in Ry)
+!  Expected with these settings:  -571.13431252 Ry,  P = 36.33 kbar,  about half a minute
+!
+!  Comments: "!" works up here and inside the &NAMELISTS. Inside the cards at the bottom
+!  (ATOMIC_SPECIES ... K_POINTS) a comment line must start with "#" in the first column -
+!  pw.x 7.5 stops with "cannot read atomic specie" if it finds a "!" line there.
+! =====================================================================================
+&CONTROL
+   calculation = 'scf'          ! single-point energy: atoms and cell stay where you put them
+   prefix      = 'zno'          ! name used for the temporary files of this calculation
+   outdir      = './tmp'        ! scratch folder (wavefunctions, charge density) - can be deleted later
+   pseudo_dir  = '../pseudo'    ! folder that holds the .UPF pseudopotential files
+   tprnfor     = .true.         ! also print the forces on the atoms
+   tstress     = .true.         ! also print the stress tensor and the pressure
+/
+&SYSTEM
+   ibrav       = 0              ! 0 = "I give the three lattice vectors myself" (CELL_PARAMETERS below)
+   nat         = 4              ! atoms in the cell: 2 Zn + 2 O  =  2 formula units of ZnO
+   ntyp        = 2              ! number of different elements
+   ecutwfc     = 50             ! plane-wave cut-off for the wavefunctions (Ry) - from the convergence test
+   ecutrho     = 400            ! cut-off for the charge density (Ry): 8 x ecutwfc for PAW pseudopotentials
+   occupations = 'fixed'        ! ZnO has a band gap: every band is either completely full or empty
+/
+&ELECTRONS
+   conv_thr    = 1.0d-9         ! stop the SCF loop when the estimated energy error is below this (Ry)
+   mixing_beta = 0.5            ! fraction of the new charge density mixed in at each iteration
+/
+ATOMIC_SPECIES
+#  symbol  mass (amu)  pseudopotential file
+   Zn  65.38   Zn.pbe-dn-kjpaw_psl.0.2.2.UPF
+   O   15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+#  hexagonal cell built from the measured a = 3.250 A and c = 5.207 A:
+#  a1 = (a, 0, 0)    a2 = (-a/2, a*sqrt(3)/2, 0)    a3 = (0, 0, c)
+   3.2500000000   0.0000000000   0.0000000000
+  -1.6250000000   2.8145825623   0.0000000000
+   0.0000000000   0.0000000000   5.2070000000
+ATOMIC_POSITIONS crystal
+#  "crystal" = fractions of the lattice vectors. Wurtzite: each O sits u = 0.382 above a Zn along c
+   Zn  0.3333333333  0.6666666667  0.0000000000
+   Zn  0.6666666667  0.3333333333  0.5000000000
+   O   0.3333333333  0.6666666667  0.3820000000
+   O   0.6666666667  0.3333333333  0.8820000000
+K_POINTS automatic
+#  6 x 6 x 4 grid of k-points; the three zeros mean "not shifted" (the grid contains the Gamma point)
+   6 6 4  0 0 0

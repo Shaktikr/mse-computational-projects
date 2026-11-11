@@ -1,0 +1,41 @@
+! =====================================================================================
+!  Lesson 7 - final energy of ZnO at its relaxed (PBE) structure
+!  The cell and the positions below were copied from the end of 04_zno_vcrelax.out
+!  (the block between "Begin final coordinates" and "End final coordinates").
+!      mpirun -np 4 pw.x -in 07_zno_final_scf.in > 07_zno_final_scf.out
+!      grep '^!' 07_zno_final_scf.out
+! =====================================================================================
+&CONTROL
+   calculation = 'scf'
+   prefix      = 'zno_final'
+   outdir      = './tmp'
+   pseudo_dir  = '../pseudo'
+   tprnfor     = .true.
+   tstress     = .true.
+/
+&SYSTEM
+   ibrav       = 0
+   nat         = 4
+   ntyp        = 2
+   ecutwfc     = 60             ! the three final energies (ZnO, Zn, O2) use identical cut-offs
+   ecutrho     = 480
+   occupations = 'fixed'
+/
+&ELECTRONS
+   conv_thr    = 1.0d-9
+   mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+   Zn  65.38   Zn.pbe-dn-kjpaw_psl.0.2.2.UPF
+   O   15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+    3.2785807410    0.0000000000    0.0000000000
+   -1.6392903700    2.8393342100    0.0000000000
+   -0.0000000000   -0.0000000000    5.2862808280
+ATOMIC_POSITIONS crystal
+   Zn  0.3333333333  0.6666666667  0.0013029674
+   Zn  0.6666666667  0.3333333333  0.5013029674
+   O   0.3333333333  0.6666666667  0.3806970326
+   O   0.6666666667  0.3333333333  0.8806970326
+K_POINTS automatic
+   8 8 5  0 0 0
