@@ -800,6 +800,7 @@ The same recipe works for any compound A_xB_y.
 | `walkthrough.sh` | guided, step-by-step run of section 5 in the terminal |
 | `qe.py`, `01_convergence.py`, `02_relax.py`, `03_formation_energy.py`, `run_all.sh` | the automated version |
 | `results_*.json`, `SUMMARY.md` | the numbers |
+| `tests/` | unit tests that run without `pw.x` (`pytest 12-zno-formation-energy/tests` from the repository root) |
 | `runs/` | every input and output of the automated runs (not under version control) |
 
 ### Limitations
@@ -819,7 +820,6 @@ The same recipe works for any compound A_xB_y.
   but the structure of zinc itself should not be quoted from this project without a check with
   a second pseudopotential and a denser k-point grid.
 * Static 0 K energies: no zero-point or thermal contributions.
-* There are no unit tests for this project yet.
 
 ### References
 

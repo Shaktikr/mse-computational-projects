@@ -9,10 +9,11 @@ Shakti Kumar · PhD, Department of Materials Science & Engineering, IIT Kanpur
 [![tests](https://github.com/Shaktikr/mse-computational-projects/actions/workflows/tests.yml/badge.svg)](https://github.com/Shaktikr/mse-computational-projects/actions/workflows/tests.yml)
 ![python](https://img.shields.io/badge/python-3.10%2B-blue) ![license](https://img.shields.io/badge/license-MIT-green)
 
-The eleven projects follow the research themes of the Mechanics and Materials Research
+Projects 01–11 follow the research themes of the Mechanics and Materials Research
 Laboratory at IIT Kanpur — creep and high-temperature deformation, spark plasma
 sintering, B2 intermetallics, superalloys, medium/high-entropy alloys and ML for creep life
-(see [docs/research-alignment.md](docs/research-alignment.md)). Every project is runnable,
+(see [docs/research-alignment.md](docs/research-alignment.md)); project 12 is a from-scratch DFT
+walkthrough for newcomers. Every project is runnable,
 unit-tested and documented, with the theory, the code and the results side by side.
 
 ---
@@ -32,6 +33,7 @@ unit-tested and documented, with the theory, the code and the results side by si
 | 09 | [MD creep of nanocrystalline metals](09-md-nanocrystalline-creep) | LAMMPS, EAM | Voronoi polycrystals (fcc / B2), constant-stress creep with seed averaging, stress exponent and activation energy |
 | 10 | [First-principles creep parameters of Al](10-dft-al-creep-parameters) | Quantum ESPRESSO (PBE), plain pw.x inputs | G, b, vacancy E_f and E_m, GSFE → **Q = 1.26 eV vs 1.28 eV measured**, γ_isf = 134–140 mJ/m²; D(T) and creep rates; all runs committed |
 | 11 | [Ideal shear strength of Al and Cu (Ogata, Li & Yip, *Science* 2002)](11-ideal-shear-strength-ogata2002) | DFT stress–strain, relaxed (pure) shear, GSFE | reproduces the paper's finding that Al is stronger in ideal shear than the stiffer Cu (τ_max 3.19 vs 2.14 GPa) |
+| 12 | [Formation energy of ZnO — a from-scratch DFT walkthrough](12-zno-formation-energy) | Quantum ESPRESSO (PBE, PAW), hand-written pw.x inputs, guided terminal lesson | Zn + ½O₂ → ZnO: **ΔH_f = −2.88 eV vs −2.8 eV in published PBE work** (experiment −3.63 eV); every command and input line explained, from installing the software to checking the result against papers |
 
 ![overview](docs/overview.png)
 
@@ -53,7 +55,9 @@ data): [docs/getting-started.md](docs/getting-started.md).
 New to DFT? [docs/dft-learning-roadmap.md](docs/dft-learning-roadmap.md) is a 16-week path
 from the Kohn–Sham equations to defects, phonons, SQS alloys and machine-learned
 potentials, built around projects 01 and 02; projects 10 and 11 are complete worked examples
-(a full parameter study, and the reproduction of a published paper).
+(a full parameter study, and the reproduction of a published paper). Project 12 is the gentlest
+starting point: one small calculation done entirely by hand, from installing the software to
+checking the result against published values.
 
 ## Repository layout
 
@@ -69,6 +73,7 @@ potentials, built around projects 01 and 02; projects 10 and 11 are complete wor
 ├── 09-md-nanocrystalline-creep/   mdcreep/  scripts/  lammps_inputs/  potentials/  results/
 ├── 10-dft-al-creep-parameters/    numbered pw.x workflow scripts  pseudo/  runs/ (all inputs + outputs)  tests/
 ├── 11-ideal-shear-strength-ogata2002/ shear scripts  pseudo/  runs/  figures/  tests/
+├── 12-zno-formation-energy/       inputs/ (hand-written)  walkthrough.sh  numbered scripts  pseudo/  tests/
 └── docs/                          roadmap, research alignment, getting started
 ```
 
