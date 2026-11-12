@@ -2,6 +2,8 @@
 !  Lesson 1: your first pw.x calculation - self-consistent field (SCF) run for fcc Al
 !  Run:   pw.x -in 01_al_scf.in > 01_al_scf.out
 !  Look for the line starting with "!" in the output: that is the converged total energy.
+!  Comments: "!" up here and inside the &NAMELISTS; inside the cards at the bottom a comment
+!  line must start with "#" (pw.x 7.5 stops with an error if it finds a "!" line there).
 ! =====================================================================================
 &CONTROL
    calculation = 'scf'          ! single-point energy at fixed atoms and cell
@@ -27,10 +29,10 @@
    mixing_beta = 0.4            ! charge-density mixing; lower it if SCF does not converge
 /
 ATOMIC_SPECIES
-!  label  mass(amu)  pseudopotential file
+#  label  mass(amu)  pseudopotential file
    Al     26.9815    Al.pbe-n-rrkjus_psl.1.0.0.UPF
 ATOMIC_POSITIONS crystal
    Al  0.0  0.0  0.0
 K_POINTS automatic
-!  Monkhorst-Pack grid n1 n2 n3 and offsets (0 = Gamma-centred)
+#  Monkhorst-Pack grid n1 n2 n3 and offsets (0 = Gamma-centred)
    18 18 18  0 0 0

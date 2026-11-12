@@ -1,0 +1,44 @@
+! =====================================================================================
+!  Lesson 5 - variable-cell relaxation of hcp zinc
+!      mpirun -np 4 pw.x -in 05_zn_vcrelax.in > 05_zn_vcrelax.out
+!      grep -A 11 'Begin final coordinates' 05_zn_vcrelax.out
+!  The two atoms sit on symmetry-fixed positions, so only the cell (a and c) changes.
+! =====================================================================================
+&CONTROL
+   calculation   = 'vc-relax'
+   prefix        = 'zn_vc'
+   outdir        = './tmp'
+   pseudo_dir    = '../pseudo'
+   forc_conv_thr = 1.0d-4
+/
+&SYSTEM
+   ibrav       = 0
+   nat         = 2
+   ntyp        = 1
+   ecutwfc     = 60             ! identical cut-offs to lesson 4 and lesson 6
+   ecutrho     = 480
+   occupations = 'smearing'
+   smearing    = 'mv'
+   degauss     = 0.02
+/
+&ELECTRONS
+   conv_thr    = 1.0d-9
+   mixing_beta = 0.5
+/
+&IONS
+/
+&CELL
+   press_conv_thr = 0.1
+/
+ATOMIC_SPECIES
+   Zn  65.38   Zn.pbe-dn-kjpaw_psl.0.2.2.UPF
+CELL_PARAMETERS angstrom
+#  starting guess = the measured cell
+   2.6650000000   0.0000000000   0.0000000000
+  -1.3325000000   2.3079577011   0.0000000000
+   0.0000000000   0.0000000000   4.9470000000
+ATOMIC_POSITIONS crystal
+   Zn  0.3333333333  0.6666666667  0.2500000000
+   Zn  0.6666666667  0.3333333333  0.7500000000
+K_POINTS automatic
+   20 20 10  0 0 0

@@ -1,0 +1,43 @@
+! =====================================================================================
+!  Lesson 6 - relax the O2 bond length (the box stays fixed, only the two atoms move)
+!      mpirun -np 4 pw.x -in 06_o2_relax.in > 06_o2_relax.out
+!  Every line starting with "!" is the energy of one geometry step; the LAST one is the
+!  energy of the relaxed molecule and is the number used for the formation energy:
+!      grep -a '^!' 06_o2_relax.out | tail -1
+!      grep -a -A 5 'Begin final coordinates' 06_o2_relax.out
+! =====================================================================================
+&CONTROL
+   calculation   = 'relax'      ! move the atoms at fixed cell until the forces vanish
+   prefix        = 'o2_rx'
+   outdir        = './tmp'
+   pseudo_dir    = '../pseudo'
+   forc_conv_thr = 1.0d-4
+/
+&SYSTEM
+   ibrav       = 0
+   nat         = 2
+   ntyp        = 1
+   ecutwfc     = 60             ! identical cut-offs to lesson 4 and lesson 5
+   ecutrho     = 480
+   occupations = 'fixed'
+   nspin       = 2
+   tot_magnetization = 2
+   starting_magnetization(1) = 0.5
+/
+&ELECTRONS
+   conv_thr    = 1.0d-9
+   mixing_beta = 0.5
+/
+&IONS
+/
+ATOMIC_SPECIES
+   O   15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+  10.0000000000   0.0000000000   0.0000000000
+   0.0000000000  10.4000000000   0.0000000000
+   0.0000000000   0.0000000000  10.8000000000
+ATOMIC_POSITIONS crystal
+#  starting guess: 1.21 A apart along z
+   O  0.5000000000  0.5000000000  0.4439814815
+   O  0.5000000000  0.5000000000  0.5560185185
+K_POINTS gamma
